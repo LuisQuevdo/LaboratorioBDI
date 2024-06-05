@@ -1,3 +1,4 @@
+use biblioteca;
 insert into departamentos values
 -- idDepartamento, departamento, pais 
 	('AH', 'Ahuachapán', 'El Salvador'),
@@ -455,6 +456,75 @@ insert into autoreslibros values
 	  ('4', '3', '9788499926711'),
 	  ('5', '3', '9781644732717');
       
+insert into roles (rol) values
+	 ('SysAdmin'), -- 1
+	 ('Bibliotecario'), -- 2
+	 ('RRHH');  -- 3
+     
+insert into usuarios (usuario, contrasenia, idRol, idEmpleado) values
+	('admin_juancarlos', 'root', '1', '1'), -- Administrador
+	('Biblio_diegofrancisco', 'diego1234', '2', '2'), -- Bibliotecario
+	('Biblio_marycarmen', 'mary1234', '2', '4'), -- Bibliotecario	
+	('rrhh_rauledgardo', 'raul1234', '3', '3'); -- RRHH
+    
+insert into opciones (opcion) values
+	('Gestionar cuentas'), -- 1
+	('Gestionar departamentos'),  -- 2
+	('Gestionar municipios'), -- 3
+	('Gestionar distritos'), -- 4
+	('Gestionar direcciones'), -- 5
+	('Gestionar cargos'),-- 6
+	('Gestionar empleados'), -- 7
+	('Gestionar lectores'), -- 8
+	('Gestionar historialPrestamo'), -- 9
+	('Gestionar prestamos'), -- 10
+	('Gestionar moras'), -- 11
+	('Gestionar autores'), -- 12
+	('Gestionar categoriaLibros'), -- 13
+	('Gestionar editoriales'), -- 14
+	('Gestionar condicionLibro'), -- 15
+	('Gestionar libros'), -- 16
+	('Gestionar prestamoLibros'), -- 17
+	('Gestionar autoresLibros'), -- 18
+	('Gestionar roles'), -- 19
+	('Gestionar opciones'), -- 20
+	('Gestionar asignacioRolesOpciones'), -- 21
+	('Gestionar usuarios'); -- 22
+
+    insert into asignacionRolesOpciones (idRol, idOpcion) values
+	-- SysAdmin
+	('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'), 
+	('1', '5'), ('1', '6'), ('1', '7'), ('1', '8'),
+	('1', '9'), ('1', '10'), ('1', '11'), ('1', '12'),
+	('1', '13'), ('1', '14'), ('1', '15'), ('1', '16'),
+	('1', '17'), ('1', '18'), ('1', '19'), ('1', '20'),
+	('1', '21'),('1', '22'),
+    
+    -- Bibliotecario
+    ('2', '5'),-- Direcciones
+    ('2', '8'),-- Lectores
+    ('2', '10'),-- Prestamos
+    ('2', '9'),-- HistorialPrestamos
+    ('2', '11'),-- Moras
+    ('2', '16'),-- Libros
+    ('2', '12'),-- Autores
+    ('2', '13'),-- CategoriaLibros
+    ('2', '15'),-- CondicionLibros
+    ('2', '2'),-- Departamentos
+    ('2', '3'),-- Municipios
+    ('2', '4'),-- Distritos
+    ('2', '17'),-- PrestamoLibros
+    ('2', '18'),-- Autoreslibros
+    
+    -- RRHH
+    ('3', '7'),-- Empleados
+    ('3', '5'),-- Direcciones
+    ('3', '6'),-- Cargos
+    ('3', '2'),-- Departamentos
+    ('3', '3'),-- Municipios
+    ('3', '4');-- Distritos
+    
+    
     -- Consultas 
     SELECT * FROM biblioteca.municipios;
     SELECT * FROM biblioteca.departamentos;
